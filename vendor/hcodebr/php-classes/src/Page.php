@@ -9,7 +9,8 @@ class Page{
 	private $tpl;
 	private $options = [];
 	private $defaults = [
-
+		"header"=>true,
+		"fooder"=>true,
 		"data"=>[]
 	];
 
@@ -29,7 +30,7 @@ class Page{
 
 		$this->setData($this->options["data"]);
 
-		$this->tpl->draw("header");
+		if ($this->options["header"] === true) $this->tpl->draw("header");
 
 	}
 
@@ -54,7 +55,7 @@ class Page{
 
     public function __destruct(){
 
-    	$this->tpl->draw("fooder");
+    	if ($this->options["fooder"]=== true)$this->tpl->draw("fooder");
 
 
     }
